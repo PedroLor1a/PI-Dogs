@@ -11,6 +11,7 @@ const getDogs = async () => {
       name: p.name,
       height: p.height.metric + " CM",
       weigth: p.weight.metric + " KG",
+      temperament: p.temperament,
       yearsLife: p.life_span,
       image:
         "https://cdn2.thedogapi.com/images/" + p.reference_image_id + ".jpg",
@@ -46,13 +47,13 @@ const getAllDogs = async () => {
   try {
     const dogsApi = await getDogs();
     const dogsDb = await getDogsDb();
+    console.log(dogsDb);
     return [...dogsApi, ...dogsDb];
   } catch (error) {
     console.error("error alldogs", error.message);
     return error;
   }
 };
-console.log(getAllDogs());
 
 //TIENE QUE BUSCAR EN LA DB TAMBIEN
 const getDogsByName = async (name) => {
@@ -62,13 +63,14 @@ const getDogsByName = async (name) => {
         `https://api.thedogapi.com/v1/breeds/search?q=${name}`
       );
       const data = response.data;
-      if (data) {
+      if (data.length > 0) {
         return data.map((p) => {
           return {
             id: p.id,
             name: p.name,
             height: p.height.metric + " CM",
             weigth: p.weight.metric + " KG",
+            temperament: p.temperament,
             yearsLife: p.life_span,
             image:
               "https://cdn2.thedogapi.com/images/" +
@@ -76,12 +78,23 @@ const getDogsByName = async (name) => {
               ".jpg",
           };
         });
+      } else {
+        const newResponse = await Dogs.findAll({
+          where: { name: name },
+        });
+        return newResponse.map((d) => ({
+          id: d.id,
+          name: d.name,
+          heightMax: d.heightMax,
+          heightMin: d.heightMin,
+          weightMax: d.weightMax,
+          weightMin: d.weightMin,
+          yearsLifeMax: d.yearsLifeMax,
+          yearsLifeMin: d.yearsLifeMin,
+          image: d.image,
+          idTemp: d.idTemp,
+        }));
       }
-    } else if (name) {
-      const newResponse = await Dogs.findOne({
-        where: { name: name },
-      });
-      return newResponse;
     }
   } catch (error) {
     console.error("error en name", error.message);
@@ -110,21 +123,26 @@ const getDogsByNameDb = async (name) => {
 // }
 
 const createDogs = async (
-  id,
   name,
-  height,
-  weight,
-  yearsLife,
+  heightMax,
+  heightMin,
+  weightMax,
+  weightMin,
+  yearsLifeMax,
+  yearsLifeMin,
   image,
   idTemp
 ) => {
   const newDog = await Dogs.create({
-    id,
     name,
-    height,
-    weight,
-    yearsLife,
+    heightMax,
+    heightMin,
+    weightMax,
+    weightMin,
+    yearsLifeMax,
+    yearsLifeMin,
     image,
+    idTemp,
   });
 
   const temperament = await Temperaments.findAll({

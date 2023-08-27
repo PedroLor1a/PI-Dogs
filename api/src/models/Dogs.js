@@ -7,24 +7,41 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      height: {
+      heightMax: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      weight: {
+      heightMin: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      yearsLife: {
+      weightMax: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      weightMin: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      yearsLifeMax: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      yearsLifeMin: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      idTemp: {
         type: DataTypes.STRING,
         allowNull: false,
       },
