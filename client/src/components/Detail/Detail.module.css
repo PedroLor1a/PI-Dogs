@@ -1,0 +1,51 @@
+.container1 {
+  border-radius: 5px; 
+padding: 30px 10px 30px 10px;
+  margin: 25px;
+  background-color: #D8D9DA;
+ margin-left: 430px;
+  
+  
+}
+.btn{
+  margin-left: 400px;
+  width: 100px;
+  margin-top: 10px;
+}
+
+.container1:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  transition: 0.5s;
+
+  animation: shake 0.5s;
+}
+
+
+
+.containerAll1{
+ 
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+}
+
+
+.img {
+  border-radius: 5px 5px ;
+height: 50%; 
+width: 90%;
+}
+
+
+
+
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(2px, -2px); } 
+    50% { transform: translate(-2px, 2px); } 
+    75% { transform: translate(2px, 0); } 
+    100% { transform: translate(0, 0); } 
+  }

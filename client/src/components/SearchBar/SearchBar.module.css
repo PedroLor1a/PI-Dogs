@@ -1,0 +1,26 @@
+.input{
+    display: flex;
+width: 800px;
+height: 25px;
+border-radius: 10px;
+margin-top: 20px;
+}
+
+
+.btn{
+    margin-left: 900px;
+    width: 80px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     width: 250px;
+     height: 350px;
+     margin-bottom: 20px;
+     margin-bottom: 50px;
+     padding: 80px;
+     background-color: blanchedalmond;
+     border-radius: 8px;
+}

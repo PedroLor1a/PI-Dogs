@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
-
+import Filters from "../Filters/Filters";
+import style from "./SearchBar.module.css";
+import { Link } from "react-router-dom";
 const SearchBar = () => {
   const [dog, setDog] = useState("");
   const [results, setResults] = useState([]);
@@ -21,16 +23,24 @@ const SearchBar = () => {
   }, [dog]);
 
   return (
-    <div>
-      <input
-        type="search"
-        placeholder="Search..."
-        value={dog}
-        onChange={(event) => setDog(event.target.value)}
-      />
+    <div className={style.containerSearch}>
+      <div className={style.containerDiv}>
+        <input
+          type="search"
+          placeholder="Search..."
+          className={style.input}
+          value={dog}
+          onChange={(event) => setDog(event.target.value)}
+        />
+      </div>
       <div>
+        <Link to="/form">
+          <button className={style.btn}>Form</button>
+        </Link>
+        <Filters />
+
         {results.map((result) => (
-          <div key={result.id}>
+          <div key={result.id} className={style.container}>
             <Card
               key={result.id}
               id={result.id}

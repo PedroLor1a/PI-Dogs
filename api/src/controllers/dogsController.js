@@ -6,15 +6,18 @@ const getDogs = async () => {
   const response = await axios(URL);
   const infoDogs = response.data;
   const dogs = infoDogs.map((p) => {
+    let newTemp = p.temperament?.split(",");
+
     return {
       id: p.id,
       name: p.name,
       height: p.height.metric + " CM",
       weigth: p.weight.metric + " KG",
-      temperament: p.temperament,
+      temperament: newTemp,
       yearsLife: p.life_span,
       image:
         "https://cdn2.thedogapi.com/images/" + p.reference_image_id + ".jpg",
+      bredFor: p.bred_for,
     };
   });
   return dogs;
@@ -147,7 +150,7 @@ const createDogs = async (
 
   const temperament = await Temperaments.findAll({
     where: {
-      id: idTemp,
+      name: idTemp,
     },
   });
   temperament.forEach((p) => {

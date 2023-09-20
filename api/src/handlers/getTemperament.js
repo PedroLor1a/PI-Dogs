@@ -5,7 +5,7 @@ const getTemps = async (req, res) => {
     const request = await getTemperaments();
     res.status(200).json(request);
   } catch (error) {
-    res.status(400).send("error getTemps");
+    res.status(400).send(error.message);
   }
 };
 

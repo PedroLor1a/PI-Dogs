@@ -1,9 +1,4 @@
-const {
-  getDogs,
-  getDogsByName,
-  getDogsDb,
-  getDogsByNameDb,
-} = require("../controllers/dogsController");
+const { getDogs, getDogsByName } = require("../controllers/dogsController");
 
 const getDogsApi = async (req, res) => {
   const { name } = req.query;

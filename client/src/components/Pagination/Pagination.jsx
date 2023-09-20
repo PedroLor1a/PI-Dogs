@@ -1,5 +1,5 @@
-import { useState } from "react";
 import style from "../Pagination/Pagination.module.css";
+import { useState } from "react";
 
 const Pagination = ({ pagina, setPagina, maximo }) => {
   const [input, setInput] = useState(1);
@@ -23,7 +23,7 @@ const Pagination = ({ pagina, setPagina, maximo }) => {
         🡸
       </button>
       <p className={style.p}>{input} </p>
-      <p className={style.p}> de {maximo}</p>
+      <p className={style.p}> de {Math.ceil(maximo)}</p>
       <button
         disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}
         onClick={nextPage}

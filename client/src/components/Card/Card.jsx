@@ -1,5 +1,5 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
+import style from "./Card.module.css";
 
 const Card = (props) => {
   const {
@@ -15,41 +15,27 @@ const Card = (props) => {
     idTemp,
   } = props;
 
-  // const tempsInfo = async (idTemp) => {
-  //   let arraycito = [];
-  //   const response = await axios("http://localhost:3001/temperaments");
-  //   const data = response.data;
-  //   const mapeo = data.find((t) => {
-  //     if (idTemp === t.id) {
-  //       return t.id;
-  //     }
-  //   });
-  //   return arraycito.push(mapeo.name);
-  // };
-  // console.log(tempsInfo(33));
-
-  // const response = axios("http://localhost:3001/temperaments");
-  // const data = response.data;
-  // const findTemp = data.find((t) => {
-  //   if (idTemp === t.id) {
-  //     return t.id;
-  //   }
-  // });
   return (
     <div>
-      <h3>{name}</h3>
+      <h3>Nombre: {name}</h3>
       {weightMax ? (
         <div>
-          <h3>{weightMax + " - " + weightMin + " KG"}</h3>
-          <h3>{heightMax + " - " + heightMin + " CM"}</h3>
+          <h3>Height: {heightMax + " - " + heightMin + " CM"}</h3>
+          <h3>Weigth: {weightMax + " - " + weightMin + " KG"}</h3>
         </div>
       ) : null}
-
-      <h3>{temperaments}</h3>
-      <h3>{weigth}</h3>
-
+      {temperaments ? <h3>Temperamento{temperaments + ""}</h3> : null}
+      {weigth ? <h3>Weigth {weigth}</h3> : null}
+      {idTemp ? <h3>Temperamento: {idTemp}</h3> : null}
       <Link to={`/detail/${id}`}>
-        <img src={image} alt={name}></img>
+        {image ? (
+          <img className={style.img} src={image} alt={name}></img>
+        ) : (
+          <img
+            className={style.img}
+            src="https://i.pinimg.com/originals/dd/a1/ab/dda1abd6d656eaa69ad7cb7a9fa527f7.jpg"
+            alt={name}></img>
+        )}
       </Link>
     </div>
   );

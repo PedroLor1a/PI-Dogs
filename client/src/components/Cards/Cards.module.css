@@ -1,0 +1,53 @@
+.fondo{
+background-image: url("Fondos-pantalla-perros-12.jpg");    
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100%
+
+}
+
+.container {  
+  display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+  
+  .container1:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transition: 0.5s;
+    animation: shake 0.5s;
+  }
+  
+
+
+.container1{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  width: 250px;
+  height: 350px;
+  margin-bottom: 20px;
+  margin-bottom: 50px;
+  padding: 80px;
+  background-color: blanchedalmond;
+  border-radius: 8px;
+ 
+}
+
+  
+  img {
+    border-radius: 5px 5px ;
+height: 100%; 
+ }
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(2px, -2px); } 
+    50% { transform: translate(-2px, 2px); } 
+    75% { transform: translate(2px, 0); } 
+    100% { transform: translate(0, 0); } 
+  }
+
